@@ -4,7 +4,7 @@ import { IoMdEye } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 const Singlenews = ({ news }) => {
-    const {_id, title, rating, total_view, author, thumbnail_url, image_url, details } = news;
+    const {_id, title, rating, total_view, author, image_url, details } = news;
     return (
         <div className="px-2 md:px-0">
             <div className="flex justify-between rounded-t-md p-4 bg-gray-200 items-center">

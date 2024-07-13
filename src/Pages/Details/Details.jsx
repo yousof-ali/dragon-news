@@ -7,9 +7,7 @@ const Details = () => {
     const alldata = useLoaderData();
     const {id} = useParams();
     const singledata = alldata.filter(data=>data._id==id);
-    console.log(singledata);
     const oneback = useNavigate()
-
     const handleback = ()=>{
         oneback(-1);
     }

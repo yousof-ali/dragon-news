@@ -4,22 +4,27 @@ import qzone1 from '../../../assets/qZone1.png'
 import qzone2 from '../../../assets/qZone2.png'
 import qzone3 from '../../../assets/qZone3.png'
 import bg from '../../../assets/bg.png'
+import { useContext } from "react";
+import { Authcontext } from "../../../authprovider/Authprovider";
 
 const Rightsidenav = () => {
+    const { user } = useContext(Authcontext);
     return (
         <div className="p-4 space-y-8">
 
-            <div className="space-y-2">
-                <h2 className="font-semibold">Login With </h2>
-                <button className="btn btn-outline md:w-full">
-                    <FaGoogle />
-                    Login with Google
-                </button> <br />
-                <button className="btn btn-outline md:w-full">
-                    <FaGithub />
-                    Login with GitHub
-                </button>
-            </div>
+            {
+                !user && <div className="space-y-2">
+                    <h2 className="font-semibold">Login With </h2>
+                    <button className="btn btn-outline md:w-full">
+                        <FaGoogle />
+                        Login with Google
+                    </button> <br />
+                    <button className="btn btn-outline md:w-full">
+                        <FaGithub />
+                        Login with GitHub
+                    </button>
+                </div>
+            }
 
             <div>
                 <h2 className="font-semibold mb-2">Find Us On </h2>

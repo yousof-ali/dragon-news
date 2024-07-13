@@ -10,6 +10,7 @@ import Singlenews from "./Singlenews";
 const Home = () => {
     const allNews = useLoaderData();
     console.log(allNews);
+
     return (
         <div className="space-y-4">
             <Header></Header>
