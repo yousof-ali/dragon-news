@@ -1,12 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../shared/Navbar/Navbar";
 import { useContext, useState } from "react";
 import { Authcontext } from "../../authprovider/Authprovider";
+import { updateProfile } from "firebase/auth";
+
 
 const Register = () => {
     const [error,setError]=useState('');
     const [check,setCheck]=useState(false);
     const {user,creatUser}=useContext(Authcontext);
+    const navigate = useNavigate(null);
     console.log(user);
     const handleRegister = e=>{
         e.preventDefault();
@@ -28,6 +31,14 @@ const Register = () => {
         creatUser(email,password)
         .then((result)=>{
             console.log(result.user);
+
+            updateProfile(result.user,{
+                displayName:name,
+                photoURL:photo
+            })
+
+            navigate("/");
+
         })
         .catch((error)=>{
             setError(error.message)
@@ -51,7 +62,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Photo Url</span>
                                 </label>
-                                <input type="text" name="photo" placeholder="Photo" className="input input-bordered"  />
+                                <input type="url" name="photo" placeholder="Photo" className="input input-bordered"  />
                             </div>
                             <div className="form-control">
                                 <label className="label">

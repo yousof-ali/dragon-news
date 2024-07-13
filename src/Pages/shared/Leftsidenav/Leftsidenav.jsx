@@ -21,7 +21,7 @@ const Leftsidenav = () => {
             <h2 className="font-semibold">All Category</h2>
             <div className="space-y-4 ml-4">
                 {
-                    category.map(single => <NavLink className="block" to={"#"} key={single.id}>{single.name}</NavLink>)
+                    category.map(single => <NavLink className="block" to={`category/${single.id}`} key={single.id}>{single.name}</NavLink>)
                 }
             </div>
             <div className="space-y-2">

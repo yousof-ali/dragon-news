@@ -1,23 +1,25 @@
 import { Link, NavLink } from "react-router-dom";
-import userdefaultPic from "../../../assets/user.png"
 import { useContext } from "react";
 import { Authcontext } from "../../../authprovider/Authprovider";
 
 
 const Navbar = () => {
-    const {user,logOut}=useContext(Authcontext);
+    const { user, logOut } = useContext(Authcontext);
     const links = <>
         <li><NavLink to={"/"}>Home</NavLink></li>
         <li><NavLink to={"/about"}>About</NavLink></li>
         <li><NavLink to={"/carrer"}>Career</NavLink></li>
     </>
-    
-    const handleLogOut=()=>{
+
+    const handleLogOut = () => {
         logOut()
-        .then(result=>{
-            console.log(result);
-        })
-        
+            .then(result => {
+                console.log(result);
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+
 
     }
     return (
@@ -51,20 +53,22 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                    <div className="w-10 rounded-full">
-                        <img
-                            alt="Tailwind CSS Navbar component"
-                            src={userdefaultPic} />
-                    </div>
-                </div>
-
                 {
-                    user?
-                    <button onClick={handleLogOut} className="btn btn-outline">Log Out</button>
-                    :<Link to={'/login'}>
-                    <button className="btn btn-outline">Log In</button>
-                </Link>
+                    user ?
+                        <>
+                            <p className="text-sm">{user.displayName}</p>
+                            <div tabIndex={0} role="button" className="btn btn-ghost mx-2 outline btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img
+                                        alt="user"
+                                        src={user.photoURL} />
+                                </div>
+                            </div>
+                            <button onClick={handleLogOut} className="btn btn-outline">Log Out</button>
+                        </>
+                        : <Link to={'/login'}>
+                            <button className="btn btn-outline">Log In</button>
+                        </Link>
                 }
             </div>
         </div>

@@ -1,12 +1,29 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../shared/Navbar/Navbar";
+import { useContext, useState } from "react";
+import { Authcontext } from "../../authprovider/Authprovider";
+
 
 
 const Login = () => {
+    const{login}=useContext(Authcontext);
+    const [error,setError]=useState('');
+    const navigate = useNavigate(null)
     const handleLogin = e => {
         e.preventDefault();
+        setError('');
         const userData = new FormData(e.currentTarget);
-        console.log(userData.get('email'));
+        const email = userData.get('email');
+        const password = userData.get('password');
+        login(email,password)
+        .then(result=>{
+            console.log(result.user);
+            navigate('/')
+        })
+        .catch(error=>{
+            console.log(error.message);
+            setError(error.message)
+        })
     }
     return (
 
@@ -32,6 +49,9 @@ const Login = () => {
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
+                            {
+                                error&& <p className="text-sm text-red-600">{error}</p>
+                            }
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Login</button>
                             </div>
