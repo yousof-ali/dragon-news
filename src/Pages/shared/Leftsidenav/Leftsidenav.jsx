@@ -17,7 +17,7 @@ const Leftsidenav = () => {
     }, [])
         ;
     return (
-        <div className="p-4 space-y-8">
+        <div className="p-4 space-y-6">
             <h2 className="font-semibold">All Category</h2>
             <div className="space-y-4 ml-4">
                 {
@@ -37,7 +37,7 @@ const Leftsidenav = () => {
                     </div>
                 </div>
             </div>
-            <div className="space-y-2">
+            <div className="space-y-2 ">
                 <Link>
                     <img className="mb-2" src={photo2} alt="" />
                     <h2 className="font-semibold">Bayern Slams Authorities Over Flight Delay to Club World Cup</h2>

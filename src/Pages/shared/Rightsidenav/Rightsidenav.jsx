@@ -3,6 +3,7 @@ import { FaFacebook, FaGoogle, FaGithub, FaInstagram, FaTwitter } from "react-ic
 import qzone1 from '../../../assets/qZone1.png'
 import qzone2 from '../../../assets/qZone2.png'
 import qzone3 from '../../../assets/qZone3.png'
+import bg from '../../../assets/bg.png'
 
 const Rightsidenav = () => {
     return (
@@ -39,10 +40,18 @@ const Rightsidenav = () => {
 
             <div className="p-4 bg-slate-100">
                 <h2 className="font-semibold mb-2">Q-Zone</h2>
-                <img  src={qzone1} alt="" />
-                <img src={qzone2} alt="" />
-                <img src={qzone3} alt="" />
+                <img className="mx-auto" src={qzone1} alt="" />
+                <img className="mx-auto" src={qzone2} alt="" />
+                <img className="mx-auto" src={qzone3} alt="" />
 
+            </div>
+            <div className="relative text-white" >
+                <img src={bg} alt="" />
+                <div className="absolute md:top-0  lg:top-16 p-4 lg:space-y-4 text-center">
+                    <h2 className="font-semibold text-2xl">Create an Amazing Newspaper</h2>
+                    <p>Discover thousands of options, easy to customize layouts, one-click to import demo and much more.</p>
+                    <button className="btn rounded-none bg-red-600 hover:bg-red-400 text-white ">Learn more..</button>
+                </div>
             </div>
         </div>
     );
