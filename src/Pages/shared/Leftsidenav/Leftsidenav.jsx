@@ -9,7 +9,7 @@ import { SlCalender } from "react-icons/sl";
 const Leftsidenav = () => {
     const [category, setCategory] = useState([]);
     useEffect(() => {
-        fetch("/public/categories.json")
+        fetch("/categories.json")
             .then((res) => res.json())
             .then((result) => {
                 setCategory(result);
